@@ -20,6 +20,28 @@ Um JSON in einer Response zurückzugeben, kannst du folgenden Code verwenden:
         headers: {
             status: 200,
             statusText: 'OK',
-            'Content-Type: 'application/json'
+            'Content-Type': 'application/json'
         }
     })
+
+### Endpunkt `all`
+
+Dieser Endpunkt gibt eine Liste alle Läder zurück.
+
+Wenn der Query String Parameter `fields` übermittelt wird, soll die Antwort nur die angegebenen Felder enthalten.
+
+### Endpunkt `name`
+
+Dieser Endpunkt verwendet den Path Parameter `name` und gibt eine Liste aller Länder zurück, deren Name den angegebenen Namen enthält.
+
+Wenn der Query String Parameter `fullText=true` übermittelt wird, sollen nur Länder enthalten sein, deren Name dem gesuchten Namen genau entspricht. Ansonsten genügt es, dass der angegebene Name im Namen des Landes enthalten ist.
+
+Wenn der Query String Parameter `fields` übermittelt wird, soll die Antwort nur die angegebenen Felder enthalten.
+
+### Endpunkt `random`
+
+Dieser Endpunkt gibt ein zufälliges Land zurück.
+
+Wenn der Query String Parameter `fields` übermittelt wird, soll die Antwort nur die angegebenen Felder enthalten.
+
+Weitere Parameter können nach eigenen Vorstellungen hinzugefügt und implementiert werden.
