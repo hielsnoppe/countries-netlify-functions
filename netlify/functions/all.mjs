@@ -1,14 +1,23 @@
+// Step 4: Define filterKeys function
+const filterKeys = (obj, keys) => {
+    
+    return obj // TODO
+}
+
 export default async (req, context) => {
 
-    // Step 1: Load countries
     const countries = require('../../countries.json')
 
-    // Step 2: Create countries JSON
-    const result = countries
+    // Step 5: Define keys constant
+    const keys = [] // TODO
+
+    // Step 6: Filter countries by fields
+    const result = countries.map((country) => {
+        return filterKeys(country, keys)
+    })
 
     const body = JSON.stringify(result)
 
-    // Step 3: Return JSON response
     return new Response(body, {
         headers: {
             'Content-Type': 'application/json'
