@@ -7,17 +7,12 @@
  */
 const filterKeys = (obj, keys) => {
     
-    // Step 7: Create empty object
     const result = {}
 
-    // Step 8: Iterate over keys
     for (let key of keys) {
-
-        // Step 9: Copy value for each key to result
         result[key] = obj[key]
     }
 
-    // Step 10: Return result
     return result
 }
 
@@ -25,7 +20,15 @@ export default async (req, context) => {
 
     const countries = require('../../countries.json')
 
-    const keys = ['name'] // TODO
+    // Step 11: Create URL object
+    const url = new URL(req.url)
+    // Step 12: Access query string parameters
+    const queryStringParams = url.searchParams
+    // Step 13: Access `fields` parameter
+    const fieldsParam = queryStringParams.get('fields')
+
+    // Step 14: Split fields parameter by comma
+    const keys = fieldsParam.split(',')
 
     const result = countries.map((country) => {
         return filterKeys(country, keys)
