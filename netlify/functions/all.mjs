@@ -26,7 +26,6 @@ export default async (req, context) => {
 
     let result = undefined
 
-    // Step 15: If fields parameter is set, filter countries by fields
     if (fieldsParam) {
 
         const keys = fieldsParam.split(',')
@@ -35,7 +34,6 @@ export default async (req, context) => {
             return filterKeys(country, keys)
         })
     }
-    // Step 16: Else return countries as is
     else {
         result = countries
     }
