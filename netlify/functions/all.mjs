@@ -20,19 +20,25 @@ export default async (req, context) => {
 
     const countries = require('../../countries.json')
 
-    // Step 11: Create URL object
     const url = new URL(req.url)
-    // Step 12: Access query string parameters
     const queryStringParams = url.searchParams
-    // Step 13: Access `fields` parameter
     const fieldsParam = queryStringParams.get('fields')
 
-    // Step 14: Split fields parameter by comma
-    const keys = fieldsParam.split(',')
+    let result = undefined
 
-    const result = countries.map((country) => {
-        return filterKeys(country, keys)
-    })
+    // Step 15: If fields parameter is set, filter countries by fields
+    if (fieldsParam) {
+
+        const keys = fieldsParam.split(',')
+
+        result = countries.map((country) => {
+            return filterKeys(country, keys)
+        })
+    }
+    // Step 16: Else return countries as is
+    else {
+        result = countries
+    }
 
     const body = JSON.stringify(result)
 
